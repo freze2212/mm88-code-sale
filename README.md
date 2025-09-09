@@ -27,9 +27,9 @@ REACT_APP_RECAPTCHA_SITE_KEY=6LdCOawrAAAAADXBh2w0jyCAqYLVNk4xlTfEOitw
 3. Đặt ảnh background vào thư mục `public/images/`:
    - `background.png` - Ảnh nền chính
    - `form-bg.png` - Ảnh nền form
-   - `logorr88.png` - Logo header
+   - `logomm88.png` - Logo header
 
-4. **Tạo favicon cho RR88** (khuyến nghị):
+4. **Tạo favicon cho MM88** (khuyến nghị):
    - Tạo file `favicon.ico` (16x16, 32x32, 48x48) - đặt trong `public/`
    - Tạo các icon PNG: `favicon-16x16.png`, `favicon-32x32.png`, `favicon-48x48.png`
    - Tạo Apple touch icon: `apple-touch-icon.png` (180x180)
@@ -78,7 +78,7 @@ PORT=8080
 │   ├── images/
 │   │   ├── background.png
 │   │   ├── form-bg.png
-│   │   └── logorr88.png
+│   │   └── logomm88.png
 │   └── index.html
 ├── src/
 │   ├── App.js
