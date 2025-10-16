@@ -167,10 +167,6 @@ function App() {
           <div className="logo">
             <img src="/images/logomm88.png" alt="Logo" className="logo-img" />
           </div>
-          <div className="header-buttons">
-            <button className="btn-login">Đăng nhập</button>
-            <button className="btn-register">Đăng ký</button>
-          </div>
         </div>
       </header>
 
