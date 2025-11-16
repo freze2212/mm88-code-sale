@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/public/images/background.jpg') no-repeat center center fixed;
+  background: url('/public/images/bg-pc.webp') no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
@@ -242,9 +242,44 @@ body:not([style*="background-image"])::before {
   margin: 0 auto;
   padding: 15px 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   max-height: 60px;
+  position: relative;
+}
+
+/* Desktop: Ẩn nav-item riêng lẻ, chỉ hiển thị nav-items */
+.nav-item.nav-home,
+.nav-item.nav-cskh {
+  display: none;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #FF0000;
+  transform: translateY(-1px);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .logo {
@@ -268,25 +303,39 @@ body:not([style*="background-image"])::before {
 
 
 .container {
-  background: url('/public/images/form-bg.png') no-repeat center center;
-  background-size: cover;
+  background: url('/public/images/form-bg.webp') no-repeat center center;
+  background-size: contain;
+  background-position: center center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
   border-radius: 25px;
   padding: 45px 40px;
-  max-height: 80%;
-  min-height: 700px;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 500px;
   text-align: center;
   position: relative;
-  aspect-ratio: 3852/2247;
-  margin: 200px auto 50px auto;
+  margin: 120px auto 50px auto;
+  overflow: visible;
+  background-clip: padding-box;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3852 / 2247;
 }
 
 .container-content {
   display: flex;
-  margin-top: 230px;
-  margin-left: -30px;
+  margin-top: 0;
+  margin-left: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 /* Đảm bảo nội dung hiển thị trên overlay */
@@ -304,31 +353,46 @@ body:not([style*="background-image"])::before {
 }
 
 .form {
-  text-align: left;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+  padding-left: 30px;
 }
 
 .form-group {
   margin-bottom: 6px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: #FF0000;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   letter-spacing: 0.3px;
   text-shadow: 0 1px 2px rgba(30, 58, 138, 0.1);
   position: relative;
   text-align: left;
+  width: 100%;
+  max-width: 400px;
 }
 
 input {
   width: 100%;
-  padding: 8px 10px;
+  max-width: 400px;
+  padding: 12px 14px;
   border: 2px solid rgba(235, 20, 5, 0.3);
   border-radius: 16px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.95);
   color: #000000;
@@ -336,6 +400,8 @@ input {
   box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
   backdrop-filter: blur(10px);
   position: relative;
+  margin: 0 auto;
+  min-height: 44px;
 }
 
 input::before {
@@ -392,7 +458,6 @@ input:focus::placeholder {
 }
 
 .submit-button-container {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -422,40 +487,29 @@ input:focus::placeholder {
 
 .submit-btn {
   width: 200px;
+  height: auto;
   bottom: 20px;
-  padding: 12px 16px;
-  background: #eede03;
-  color: #fc0000;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  font-size: 1.55rem;
-  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  object-fit: contain;
 }
 
-.submit-btn:hover:not(:disabled) {
-  background: #eede03;
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+.submit-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  background: #eede03;
-  border-color: transparent;
-  color: rgba(255, 0, 0, 0.6);
+.submit-btn:active {
   transform: translateY(0);
 }
 
-.submit-btn:active:not(:disabled) {
-  transform: none;
-  position: relative;
-  bottom: 0;
+.submit-btn.disabled {
+  /* opacity: 0.6; */
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Ẩn title và subtitle trên desktop */
@@ -468,378 +522,578 @@ h1, .subtitle {
   display: none;
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
+/* Tablet responsive - 769px to 1024px */
+@media (max-width: 1024px) {
   .header-content {
-    padding: 12px 20px;
-    justify-content: center;
+    padding: 12px 25px;
+    gap: 20px;
   }
-  
-  .logo-text {
-    font-size: 1.3rem;
+
+  .nav-items {
+    gap: 20px;
   }
-  
-  
+
+  .nav-item {
+    font-size: 0.85rem;
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .logo-img {
+    width: 180px;
+    height: 180px;
+  }
+
   .container {
-    padding: 30px 20px;
-    margin: 20px;
-    /* Mobile: Không dùng ảnh form-bg, chỉ dùng background đơn giản */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 100%);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(112, 224, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 85, 213, 0.2);
+    max-width: 95%;
+    padding: 40px 35px;
   }
-  
-  /* Hiển thị title mobile trên mobile */
-  .mobile-title {
-    display: block;
-    color: #FFD700;
-    font-size: 2rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
-  }
-  
-  /* Ẩn title desktop trên mobile */
+
   h1 {
-    display: none;
+    font-size: 1.7rem;
+    margin-bottom: 15px;
   }
-  
-  /* Hiển thị subtitle trên mobile */
+
   .subtitle {
-    display: block;
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 25px;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
   }
-  
+
+  .form {
+    max-width: 320px;
+  }
+
   input {
-    padding: 8px 12px;
+    padding: 11px 13px;
     font-size: 0.9rem;
+    max-width: 100%;
   }
-  
+
+  label {
+    font-size: 0.95rem;
+  }
+
+  .captcha-container {
+    transform: scale(0.75);
+  }
+
   .submit-btn {
-    padding: 14px 18px;
+    width: 180px;
   }
 }
 
-/* Mobile specific styles - Small phones */
-@media (max-width: 480px) {
+/* Mobile responsive - up to 768px */
+@media (max-width: 768px) {
+  .header {
+    width: 100%;
+    padding: 0 !important;
+  }
+
   .header-content {
     padding: 10px 15px;
-    justify-content: center;
+    max-height: 50px;
+    gap: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* Mobile: show Trang chủ left, logo center, CSKH right */
+  .nav-item.nav-home {
+    display: flex !important;
+    order: 1;
+    margin-right: auto;
+  }
+
+  .logo {
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  .nav-item.nav-cskh {
+    display: flex !important;
+    order: 3;
+    margin-left: auto;
+  }
+
+  /* Hide nav-items container on mobile */
+  .nav-items {
+    display: none;
+  }
+
+  .nav-item {
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo-img {
+    width: 140px;
+    height: 140px;
+  }
+
+
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  .subtitle {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .form {
+    max-width: 280px;
+  }
+
+  .form-group {
+    margin-bottom: 5px;
+  }
+
+  label {
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+  }
+
+  input {
+    padding: 9px 11px;
+    font-size: 0.85rem;
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+
+  .submit-btn {
+    width: 160px;
+  }
+
+  .bubble {
+    display: none;
+  }
+}
+
+/* Small phones - 481px to 600px */
+@media (max-width: 600px) and (min-width: 481px) {
+  .header-content {
+    padding: 9px 14px;
+    max-height: 48px;
+    gap: 10px;
+  }
+
+  .nav-items {
+    gap: 10px;
+  }
+
+  .nav-item {
+    font-size: 0.7rem;
+    gap: 4px;
+  }
+
+  .nav-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .logo-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 9px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+  }
+
+  .form {
+    max-width: 270px;
+  }
+
+  input {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  label {
+    font-size: 0.82rem;
+    margin-bottom: 3px;
+  }
+
+  .captcha-container {
+    transform: scale(0.68);
+    margin: 9px auto;
+  }
+
+  .submit-btn {
+    width: 155px;
+  }
+}
+
+/* Extra small phones - 430px to 480px */
+@media (max-width: 480px) and (min-width: 380px) {
+  .header-content {
+    padding: 8px 12px;
+    max-height: 46px;
+    gap: 8px;
+  }
+
+  .nav-items {
+    gap: 8px;
+  }
+
+  .nav-item {
+    font-size: 0.65rem;
+    gap: 3px;
+  }
+
+  .nav-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .logo-img {
+    width: 115px;
+    height: 115px;
+  }
+
+  .container {
+    max-width: 90%;
+    padding: 25px 20px;
+    margin: 65px auto 20px auto;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    max-width: 260px;
+  }
+
+  input {
+    padding: 7px 9px;
+    font-size: 0.8rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+
+  .captcha-container {
+    transform: scale(0.65);
+    margin: 8px auto;
+  }
+
+  .submit-btn {
+    width: 145px;
+  }
+}
+
+/* Tiny phones - up to 379px */
+/* @media (max-width: 375px) {
+  .header-content {
+    padding: 7px 10px;
+    max-height: 44px;
+    gap: 7px;
+  }
+
+  .nav-items {
+    gap: 7px;
+  }
+
+  .nav-item {
+    font-size: 0.6rem;
+    gap: 3px;
+  }
+
+  .nav-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .logo-img {
+    width: 105px;
+    height: 105px;
+  }
+
+  h1 {
+    font-size: 1rem;
+    margin-bottom: 7px;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 18px;
+  }
+
+  .form {
+    max-width: 250px;
+  }
+
+  input {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  label {
+    font-size: 0.78rem;
+    margin-bottom: 2px;
+  }
+
+  .captcha-container {
+    transform: scale(0.6);
+    margin: 7px auto;
+  }
+
+  .submit-btn {
+    width: 135px;
+  }
+} */
+
+/* Mobile specific styles - Small phones */
+@media (max-width: 480px) {
+
+  .form {
+    padding-left: 10px;
+    padding-right: 30px;
   }
   
   .logo-img {
-    width: 240px;
-    height: 240px;
+    width: 105px;
+    height: 105px;
   }
   
-  
   .container {
-    padding: 25px 15px;
-    margin: 15px;
-    margin-top: 100px;
-    max-width: 98%;
-    min-height: 450px;
-    border-radius: 20px;
-    /* Mobile: Background đơn giản với gradient */
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 255, 0.95) 100%);
-    backdrop-filter: blur(25px);
-    border: 2px solid rgba(112, 224, 255, 0.4);
-    box-shadow: 0 15px 35px rgba(0, 85, 213, 0.15);
-    /* Căn giữa container */
+    /* mobile full-width background image */
+    background: url('/public/images/form-bg-mb.webp') no-repeat top center;
+    background-size: 122% auto;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: relative;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
   }
   
   .container-content {
-    margin-top: 80px;
-    /* Căn giữa nội dung */
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 350px;
-    margin: 80px auto 0 auto;
   }
   
-  /* Title màu vàng cho mobile nhỏ */
-  .mobile-title {
-    display: block;
-    color: #FFD700;
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 12px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.8px;
-  }
-  
-  /* Ẩn title desktop trên mobile */
+  /* Hiển thị title */
   h1 {
+    display: block;
+    color: #000000;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+  
+  .mobile-title {
     display: none;
   }
   
   .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-    text-align: center;
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 17px;
   }
   
   .form-group {
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     text-align: center;
     width: 100%;
   }
   
   label {
-    font-size: 0.8rem;
-    margin-bottom: 4px;
+    font-size: 0.72rem;
+    margin-bottom: 3px;
     color: #FF0000;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 2px rgba(30, 58, 138, 0.1);
     text-align: left;
     display: block;
     width: 100%;
+    max-width: 100%;
     font-weight: 700;
+    margin: 0 auto 3px auto;
   }
   
   input {
-    padding: 4px 6px;
-    font-size: 12px;
-    border-radius: 10px;
+    padding: 7px 9px;
+    font-size: 0.77rem;
+    border-radius: 13px;
     background: rgba(255, 255, 255, 0.95);
-    border: 2px solid #FF0000;
+    border: 2px solid rgba(235, 20, 5, 0.3);
     color: #000000;
     width: 100%;
-    max-width: 280px;
+    max-width: 100%;
     margin: 0 auto;
     display: block;
-    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
+    min-height: 40px;
   }
   
   .captcha-container {
     transform: scale(0.6);
-    margin: 15px auto;
+    margin: 10px auto;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-  }
-  
-  .submit-button-container {
-    margin-top: 8px;
+    transform-origin: center;
   }
   
   .submit-btn {
-    padding: 10px 14px;
-    font-size: 0.85rem;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 220px;
-    background: #FF0000;
-    color: #FFFFFF;
-    border: 2px solid #FF0000;
-    font-weight: 700;
-    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.4);
+    width: 140px;
+    height: auto;
   }
 }
 
 /* Extra small mobile devices */
-@media (max-width: 360px) {
-  .header-content {
-    padding: 8px 12px;
-    justify-content: center;
+/* / */
+@media (max-width: 414px){
+  .form {
+    margin-top: 20px;
   }
-  
-  .logo-img {
-    width: 120px;
-    height: 120px;
-  }
-  
-  
-  .container {
-    padding: 20px 12px;
-    margin: 10px;
-    margin-top: 90px;
-    max-width: 99%;
-    min-height: 400px;
-    /* Mobile nhỏ: Background đơn giản hơn */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 255, 0.98) 100%);
-    backdrop-filter: blur(30px);
-    border: 2px solid rgba(112, 224, 255, 0.5);
-    box-shadow: 0 12px 28px rgba(0, 85, 213, 0.12);
-    /* Căn giữa container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .container-content {
-    margin-top: 70px;
-    /* Căn giữa nội dung */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 320px;
-    margin: 50px auto 0 auto;
-  }
-  
-  /* Title màu vàng cho mobile rất nhỏ */
-  .mobile-title {
-    display: block;
-    color: #FFD700;
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.6px;
-  }
-  
-  /* Ẩn title desktop trên mobile */
-  h1 {
-    display: none;
-  }
-  
-  .subtitle {
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  input {
-    padding: 10px 12px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid rgba(255, 0, 0, 0.5);
-    width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
-    display: block;
-  }
-  
-  .captcha-container {
-    transform: scale(0.75);
-    margin: 15px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .submit-button-container {
-    margin-top: 12px;
-  }
-  
   .submit-btn {
-    padding: 12px 16px;
-    font-size: 0.9rem;
-    width: 100%;
-    max-width: 260px;
-    background: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    max-width: 120px;
   }
 }
+
+@media (max-width: 390px){
+  .form{
+    margin-top: 0px !important;
+  }
+  .submit-btn{
+    max-width: 110px;
+  }
+}
+
+@media (max-width: 375px){
+  .form{
+    margin-top: -20px !important;
+  }
+  .submit-btn{
+    max-width: 100px;
+  }
+
+}
+
+@media (max-width: 360px){
+  .form{
+    margin-top: -35px !important;
+  }
+  .submit-btn{
+    max-width: 90px;
+    margin-top: -10px;
+  }
+  .form {
+    max-width: 250px !important;
+  }
+
+  .rc-anchor-normal{
+    height: 69px !important;
+  }
+}
+
+
 
 /* Mobile landscape orientation */
 @media (max-height: 500px) and (orientation: landscape) {
   .header-content {
-    padding: 8px 20px;
-    justify-content: center;
+    padding: 7px 12px;
+    max-height: 42px;
+    gap: 10px;
   }
-  
+
+  .nav-items {
+    gap: 10px;
+  }
+
+  .nav-item {
+    font-size: 0.65rem;
+  }
+
+  .nav-icon {
+    width: 14px;
+    height: 14px;
+  }
+
   .logo-img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
-  
+
   .container {
-    margin-top: 80px;
-    min-height: 300px;
-    padding: 20px 30px;
-    /* Landscape: Background đơn giản */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(240, 248, 255, 0.93) 100%);
-    backdrop-filter: blur(20px);
-    /* Căn giữa container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    max-width: 90%;
+    padding: 20px 18px;
+    margin: 55px auto 12px auto;
   }
-  
-  .container-content {
-    margin-top: 60px;
-    /* Căn giữa nội dung */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 450px;
-    margin: 60px auto 0 auto;
-  }
-  
-  /* Title màu vàng cho landscape */
-  .mobile-title {
-    display: block;
-    color: #FFD700;
-    font-size: 1.6rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 12px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.7px;
-  }
-  
-  /* Ẩn title desktop trên landscape */
+
   h1 {
-    display: none;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    display: block;
   }
-  
+
   .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    text-align: center;
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
   }
-  
-  .form-group {
-    margin-bottom: 12px;
-    text-align: center;
-    width: 100%;
+
+  .form {
+    max-width: 260px;
   }
-  
+
+  input {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  label {
+    font-size: 0.78rem;
+  }
+
   .captcha-container {
     transform: scale(0.6);
-    margin: 12px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    margin: 8px auto;
   }
-  
-  .submit-button-container {
-    margin-top: 12px;
-  }
-  
+
   .submit-btn {
-    width: 100%;
-    max-width: 350px;
-    background: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    width: 130px;
   }
 }
 
@@ -849,151 +1103,85 @@ h1, .subtitle {
   .bubble {
     display: none;
   }
-  
-  /* Tối ưu cho touch devices */
-  .submit-btn {
-    min-height: 44px;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  input {
-    min-height: 44px;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  /* Tối ưu transitions cho mobile */
-  * {
-    transition-duration: 0.2s;
-  }
-  
-  /* Background đơn giản cho tất cả mobile */
-  .container {
-    background-image: none !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 248, 255, 0.92) 100%);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(112, 224, 255, 0.3);
-    /* Căn giữa container trên mobile */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .container-content {
-    /* Căn giữa nội dung */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+  /* Mobile header: responsive */
+  .header {
     width: 100%;
-    max-width: 400px;
-    margin: 20px auto 0 auto;
   }
-  
-  /* Title màu vàng cho mobile */
-  .mobile-title {
-    display: block;
-    color: #FFD700;
-    font-size: 2.2rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
+
+  .header-content {
+    padding: 10px 15px;
+    max-height: 50px;
+    gap: 12px;
   }
-  
-  /* Ẩn title desktop trên mobile */
+
+  .nav-items {
+    gap: 12px;
+  }
+
+  .nav-item {
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
   h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .mobile-title {
     display: none;
   }
-  
-  /* Căn giữa form trên mobile */
+
+  .subtitle {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
   .form {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
+    max-width: 280px;
+    margin-top: 40px;
   }
-  
-  /* Căn giữa form groups */
+
   .form-group {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
   }
-  
-  /* Căn giữa labels */
+
   label {
-    margin-left: 50px;
-    text-align: left;
-    display: block;
-    width: 100%;
-    color: #FF0000;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-  
-  /* Căn giữa inputs */
-  input {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid #FF0000;
-    color: #000000;
-    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
-  }
-  
-  /* Căn giữa captcha */
-  .captcha-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 15px auto;
-    transform: scale(0.7);
-  }
-  
-  /* Căn giữa submit button */
-  .submit-button-container {
-    margin-top: 8px;
-  }
-  
-  .submit-btn {
-    width: 100%;
-    max-width: 250px;
-    padding: 10px 14px;
     font-size: 0.85rem;
-    border-radius: 8px;
-    background: #FF0000;
-    color: #FFFFFF;
-    border: 2px solid #FF0000;
-    font-weight: 700;
-    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.4);
-    position: relative;
-    bottom: 20;
+    margin-bottom: 3px;
   }
-  
-  .submit-btn:active:not(:disabled) {
-    transform: none;
-    position: relative;
-    bottom: 20;
-    background: #CC0000;
-  }
-  
-  /* Tối ưu box-shadow cho mobile */
-  .container {
-    box-shadow: 0 10px 25px rgba(0, 85, 213, 0.15);
-  }
-  
-  .submit-btn {
-    box-shadow: none;
-  }
-  
+
   input {
-    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.15);
+    padding: 9px 11px;
+    font-size: 0.85rem;
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .captcha-container {
+    transform: scale(0.7);
+    margin: -10px auto;
+  }
+
+  .submit-btn {
+    width: 160px;
   }
 }
 
@@ -1068,22 +1256,6 @@ h1, .subtitle {
   white-space: pre-line !important;
 }
 
-/* Loading animation */
-.submit-btn:disabled {
-  position: relative;
-  overflow: hidden;
-}
-
-.submit-btn:disabled::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: loading 1.5s infinite;
-}
 
 @keyframes loading {
   0% { left: -100%; }

@@ -164,17 +164,32 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="header-content">
+          <div className="nav-item nav-home">
+            <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+            <span>Trang chủ</span>
+          </div>
           <div className="logo">
             <img src="/images/logomm881.png" alt="Logo" className="logo-img" />
+          </div>
+          <div className="nav-items">
+            <div className="nav-item">
+              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+              <span>Trang chủ</span>
+            </div>
+            <div className="nav-item">
+              <img src="/images/headphone.png" alt="Support" className="nav-icon" />
+              <span>CSKH 24/7</span>
+            </div>
+          </div>
+          <div className="nav-item nav-cskh">
+            <img src="/images/headphone.png" alt="Support" className="nav-icon" />
+            <span>CSKH 24/7</span>
           </div>
         </div>
       </header>
 
       <div className="container">
         <div className="container-content">
-          <h1>Xác thực mã code</h1>
-          <div className="mobile-title">Nhập Code Free</div>
-          <p className="subtitle">Vui lòng nhập thông tin để xác thực mã code</p>
           <form onSubmit={handleSubmit} className="form">
             <div className="form-group">
               <label htmlFor="username">Tên tài khoản:</label>
@@ -217,14 +232,16 @@ function App() {
 
           {/* Nút Nhận tách riêng */}
           <div className="submit-button-container">
-            <button
-              type="button"
-              className="submit-btn"
-              onClick={handleSubmit}
-              disabled={isSubmitting || !captchaValue}
-            >
-              {isSubmitting ? 'Đang xử lý...' : 'Nhận'}
-            </button>
+            <img
+              src="/images/btn.webp"
+              alt="Nhận"
+              className={`submit-btn ${(isSubmitting || !captchaValue) ? 'disabled' : ''}`}
+              onClick={isSubmitting || !captchaValue ? undefined : handleSubmit}
+              style={{
+                cursor: (isSubmitting || !captchaValue) ? 'not-allowed' : 'pointer',
+                opacity: (isSubmitting || !captchaValue) ? 0.6 : 1
+              }}
+            />
           </div>
         </div>
       </div>
