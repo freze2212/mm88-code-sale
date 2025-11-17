@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useState, useRef, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from './utils/apiHelper';
@@ -12,6 +11,8 @@ function App() {
   });
   const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const turnstileRef = useRef(null);
+  const widgetIdRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,9 +22,53 @@ function App() {
     }));
   };
 
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
-  };
+  useEffect(() => {
+    const SITEKEY = (
+      process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY ||
+      process.env.REACT_APP_CLOUDFLARE_TURNSTILE_SITE_KEY ||
+      ''
+    );
+
+    function renderWidget() {
+      if (!window.turnstile || !turnstileRef.current) return;
+      try {
+        if (widgetIdRef.current !== null) {
+          window.turnstile.reset(widgetIdRef.current);
+          return;
+        }
+
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: SITEKEY,
+          callback: (token) => setCaptchaValue(token),
+          'expired-callback': () => setCaptchaValue(null),
+        });
+      } catch (e) {
+        console.error('Turnstile render error', e);
+      }
+    }
+
+    const scriptSrc = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    const existing = document.querySelector(`script[src="${scriptSrc}"]`);
+    if (!existing) {
+      const s = document.createElement('script');
+      s.src = scriptSrc;
+      s.async = true;
+      s.defer = true;
+      s.onload = renderWidget;
+      document.body.appendChild(s);
+    } else {
+      if (window.turnstile) renderWidget();
+      else existing.addEventListener('load', renderWidget);
+    }
+
+    return () => {
+      try {
+        if (window.turnstile && widgetIdRef.current !== null) {
+          window.turnstile.reset(widgetIdRef.current);
+        }
+      } catch (e) {}
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,14 +177,18 @@ function App() {
            draggable: true,
          });
        }
-                     } finally {
-        setIsSubmitting(false);
-        // LUÔN reset reCAPTCHA và state sau mỗi lần submit (dù thành công hay thất bại)
-        if (window.grecaptcha) {
-          window.grecaptcha.reset();
-        }
-        setCaptchaValue(null);
-      }
+                    } finally {
+                      setIsSubmitting(false);
+                      // Reset Turnstile (or reCAPTCHA if still present) and clear token
+                      try {
+                        if (window.turnstile && widgetIdRef.current !== null) {
+                          window.turnstile.reset(widgetIdRef.current);
+                        } else if (window.grecaptcha) {
+                          window.grecaptcha.reset();
+                        }
+                      } catch (e) {}
+                      setCaptchaValue(null);
+                    }
   };
 
   return (
@@ -220,12 +269,8 @@ function App() {
             <div className="form-group">
               <label>Xác thực:</label>
               <div className="captcha-container">
-                <ReCAPTCHA
-                   sitekey="6LdCOawrAAAAADXBh2w0jyCAqYLVNk4xlTfEOitw" 
-                   onChange={handleCaptchaChange}
-                   theme="light"
-                   hl="vi"
-                 />
+                {/* Cloudflare Turnstile will render here */}
+                <div ref={turnstileRef} />
               </div>
             </div>
           </form>
