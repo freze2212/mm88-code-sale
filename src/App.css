@@ -276,6 +276,16 @@ body:not([style*="background-image"])::before {
   transform: translateY(-1px);
 }
 
+/* Make the nav icons tint to the same hover color as the text */
+.nav-item .nav-icon {
+  /* no transition to avoid flicker when changing color */
+  transition: none !important;
+}
+.nav-item:hover .nav-icon {
+  /* immediate red tint to match nav text */
+  filter: invert(23%) sepia(94%) saturate(6400%) hue-rotate(335deg) brightness(98%) contrast(101%);
+}
+
 .nav-icon {
   width: 20px;
   height: 20px;
@@ -1094,6 +1104,13 @@ h1, .subtitle {
 
   .submit-btn {
     width: 130px;
+  }
+}
+
+/* Desktop: spacing adjustment for wide screens */
+@media (min-width: 1300px) {
+  .submit-button-container {
+    margin-left: 2rem;
   }
 }
 
