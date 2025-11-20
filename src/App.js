@@ -11,6 +11,7 @@ function App() {
   });
   const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [rewardPoint, setRewardPoint] = useState(0);
   const turnstileRef = useRef(null);
   const widgetIdRef = useRef(null);
 
@@ -119,7 +120,17 @@ function App() {
        console.log("result", result);
 
         if (result.message === "Thành công") {
-            toast.success(result.message || 'Xác thực thành công! Mã code đã được gửi.', {
+          const points = result?.data?.pointsAdded || 0;
+          setRewardPoint(points);
+          const successContent = (
+            <span>
+              Chúc mừng{' '}
+              <span style={{ color: '#3fff0a', fontWeight: 600 }}>{formData.username}</span>{' '}
+              đã nhận thành công{' '}
+              <span style={{ color: '#ffff00', fontWeight: 600 }}>{points}</span> điểm
+            </span>
+          );
+            toast.success(successContent, {
               position: "top-center",
               autoClose: 8000,
               hideProgressBar: false,
