@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
-  const POINTS = [18, 28, 38, 58, 68, 88];
+  const POINTS = [88, 98, 158, 168, 388, 248];
   const [formData, setFormData] = useState({
     username: '',
     code: ''
