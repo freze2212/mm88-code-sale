@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
+  const POINTS = [18, 28, 38, 58, 68, 88];
   const [formData, setFormData] = useState({
     username: '',
     code: ''
@@ -69,6 +70,12 @@ function App() {
     };
   }, []);
 
+  const getRandomPoint = () => {
+    if (!POINTS.length) return 0;
+    const randomIndex = Math.floor(Math.random() * POINTS.length);
+    return POINTS[randomIndex];
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -98,17 +105,26 @@ function App() {
     }
 
     setIsSubmitting(true);
+    const rewardPoint = getRandomPoint();
 
     // Tự động thành công, không gọi API
     setTimeout(() => {
-      toast.success('Thành công', {
+      toast.success(
+        <span>
+          Chúc mừng{' '}
+          <span style={{ color: '#3fff0a', fontWeight: 600 }}>{formData.username}</span>{' '}
+          đã nhận thành công{' '}
+          <span style={{ color: '#ffff00', fontWeight: 600 }}>{rewardPoint}</span> điểm
+        </span>,
+        {
         position: "top-center",
         autoClose: 8000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-      });
+        }
+      );
       setIsSubmitting(false);
     }, 500);
   };
