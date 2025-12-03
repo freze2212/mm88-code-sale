@@ -6,7 +6,10 @@ import './App.css';
 function App() {
   // Random các số từ 188 tới 6888, chia đều, kết thúc là số có 6 hoặc 8 ở đuôi
   const POINTS = [
-    188, 288, 388, 488, 588, 688, 888, 1688, 1888, 2688, 2888, 3688, 3888, 4688, 4888, 5688, 5888, 6688, 6888
+    // More numbers under 1000
+    188, 208, 268, 288, 338, 388, 468, 488, 528, 588, 658, 688, 768, 788, 828, 888, 948, 988,
+    // Each ~1000 interval above has just one number
+    1688, 2688, 3688, 4888, 5888, 6688
   ];
   const [formData, setFormData] = useState({
     username: '',
