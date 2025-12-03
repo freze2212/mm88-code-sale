@@ -4,7 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
-  const POINTS = [188, 288, 388, 488, 588, 688, 788, 888];
+  // Random các số từ 188 tới 6888, chia đều, kết thúc là số có 6 hoặc 8 ở đuôi
+  const POINTS = [
+    188, 288, 388, 488, 588, 688, 888, 1688, 1888, 2688, 2888, 3688, 3888, 4688, 4888, 5688, 5888, 6688, 6888
+  ];
   const [formData, setFormData] = useState({
     username: '',
     code: ''
