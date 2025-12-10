@@ -224,27 +224,43 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="header-content">
-          <div className="nav-item nav-home">
-            <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
-            <span>Trang chủ</span>
-          </div>
+          <a href='https://pc-mm88-link.rr88tino.workers.dev'
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <div className="nav-item nav-home">
+              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+              <span>Trang chủ</span>
+            </div> 
+          </a>
           <div className="logo">
             <img src="/images/logomm881.png" alt="Logo" className="logo-img" />
           </div>
           <div className="nav-items">
-            <div className="nav-item">
-              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
-              <span>Trang chủ</span>
-            </div>
-            <div className="nav-item">
+            <a href='https://pc-mm88-link.rr88tino.workers.dev'
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className="nav-item">
+                <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+                <span>Trang chủ</span>
+              </div>
+            </a>
+            <a href='https://mm88-cskh.pages.dev'
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className="nav-item">
+                <img src="/images/headphone.png" alt="Support" className="nav-icon" />
+                <span>CSKH 24/7</span>
+              </div>
+            </a>
+          </div>
+          <a href='https://mm88-cskh.pages.dev'
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <div className="nav-item nav-cskh">
               <img src="/images/headphone.png" alt="Support" className="nav-icon" />
               <span>CSKH 24/7</span>
             </div>
-          </div>
-          <div className="nav-item nav-cskh">
-            <img src="/images/headphone.png" alt="Support" className="nav-icon" />
-            <span>CSKH 24/7</span>
-          </div>
+          </a>
         </div>
       </header>
 
