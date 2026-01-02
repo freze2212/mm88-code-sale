@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pháo hoa">
+  <defs>
+    <radialGradient id="core" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#fff9c4"/>
+      <stop offset="60%" stop-color="#ffd54f"/>
+      <stop offset="100%" stop-color="#ff7043"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="6" fill="url(#core)"/>
+  <!-- colorful rays -->
+  <g stroke-linecap="round" stroke-width="3">
+    <line x1="60" y1="4" x2="60" y2="22" stroke="#FF5252"/>
+    <line x1="60" y1="98" x2="60" y2="116" stroke="#FF7043"/>
+    <line x1="4" y1="60" x2="22" y2="60" stroke="#FFEB3B"/>
+    <line x1="98" y1="60" x2="116" y2="60" stroke="#FF9800"/>
+    <line x1="18" y1="18" x2="34" y2="34" stroke="#FF4081"/>
+    <line x1="86" y1="86" x2="102" y2="102" stroke="#E040FB"/>
+    <line x1="18" y1="102" x2="34" y2="86" stroke="#4FC3F7"/>
+    <line x1="86" y1="34" x2="102" y2="18" stroke="#81C784"/>
+  </g>
+  <!-- small sparkles -->
+  <g fill="#FFF8E1" opacity="0.95">
+    <circle cx="16" cy="8" r="2"/>
+    <circle cx="104" cy="18" r="1.6"/>
+    <circle cx="92" cy="104" r="1.8"/>
+  </g>
+</svg>

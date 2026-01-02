@@ -291,11 +291,11 @@ function App() {
             <img
               src="/images/btn.webp"
               alt="Nhận"
-              className={`submit-btn ${(isSubmitting || !captchaValue) ? 'disabled' : ''}`}
-              onClick={isSubmitting || !captchaValue ? undefined : handleSubmit}
+              className={`submit-btn ${isSubmitting ? 'disabled' : ''}`}
+              onClick={isSubmitting ? undefined : handleSubmit}
               style={{
-                cursor: (isSubmitting || !captchaValue) ? 'not-allowed' : 'pointer',
-                opacity: (isSubmitting || !captchaValue) ? 0.6 : 1
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting ? 0.6 : 1
               }}
             />
           </div>
