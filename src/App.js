@@ -305,7 +305,7 @@ function App() {
           {/* Nút Nhận tách riêng */}
           <div className="submit-button-container">
             <img
-              src="/images/btn.webp"
+              src="/images/btn1.webp"
               alt="Nhận"
               className={`submit-btn ${isSubmitting ? 'disabled' : ''}`}
               onClick={isSubmitting ? undefined : handleSubmit}
