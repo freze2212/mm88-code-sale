@@ -157,27 +157,43 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="header-content">
-          <div className="nav-item nav-home">
-            <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
-            <span>Trang chủ</span>
-          </div>
+          <a href='https://pc-mm88-link.rr88tino.workers.dev'
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <div className="nav-item nav-home">
+              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+              <span>Trang chủ</span>
+            </div> 
+          </a>
           <div className="logo">
             <img src="/images/logomm881.png" alt="Logo" className="logo-img" />
           </div>
           <div className="nav-items">
-            <div className="nav-item">
-              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
-              <span>Trang chủ</span>
-            </div>
-            <div className="nav-item">
+            <a href='https://pc-mm88-link.rr88tino.workers.dev'
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className="nav-item">
+                <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+                <span>Trang chủ</span>
+              </div>
+            </a>
+            <a href='https://mm88-cskh.pages.dev'
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className="nav-item">
+                <img src="/images/headphone.png" alt="Support" className="nav-icon" />
+                <span>CSKH 24/7</span>
+              </div>
+            </a>
+          </div>
+          <a href='https://mm88-cskh.pages.dev'
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <div className="nav-item nav-cskh">
               <img src="/images/headphone.png" alt="Support" className="nav-icon" />
               <span>CSKH 24/7</span>
             </div>
-          </div>
-          <div className="nav-item nav-cskh">
-            <img src="/images/headphone.png" alt="Support" className="nav-icon" />
-            <span>CSKH 24/7</span>
-          </div>
+          </a>
         </div>
       </header>
 
@@ -224,11 +240,11 @@ function App() {
             <img
               src="/images/btn.webp"
               alt="Nhận"
-              className={`submit-btn ${isSubmitting ? 'disabled' : ''}`}
-              onClick={isSubmitting ? undefined : handleSubmit}
+              className={`submit-btn ${(isSubmitting || !captchaValue) ? 'disabled' : ''}`}
+              onClick={isSubmitting || !captchaValue ? undefined : handleSubmit}
               style={{
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting ? 0.6 : 1
+                cursor: (isSubmitting || !captchaValue) ? 'not-allowed' : 'pointer',
+                opacity: (isSubmitting || !captchaValue) ? 0.6 : 1
               }}
             />
           </div>
