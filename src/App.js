@@ -157,17 +157,36 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="header-content">
-          <a href='https://pc-mm88-link.rr88tino.workers.dev'
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
-            <div className="nav-item nav-home">
-              <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
-              <span>Trang chủ</span>
-            </div> 
-          </a>
-          <div className="logo">
-            <img src="/images/logomm881.png" alt="Logo" className="logo-img" />
+          {/* PC Desktop */}
+          <div className="header-section header-section--left">
+            <a 
+              href='https://pc-mm88-link.rr88tino.workers.dev'
+              style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}
+            >
+              <div className="nav-item nav-home">
+                <img src="/images/icon-home.png" alt="Home" className="nav-icon" />
+                <span>Trang chủ</span>
+              </div>
+            </a>
           </div>
+          <div className="header-section header-section--center">
+            <div className="logo">
+              <img src="/images/logomm881.png" alt="Logo" className="logo-img" />
+            </div>
+          </div>
+          <div className="header-section header-section--right">
+            <a 
+              href='https://mm88-cskh.pages.dev'
+              style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}
+            >
+              <div className="nav-item nav-cskh">
+                <img src="/images/headphone.png" alt="Support" className="nav-icon" />
+                <span>CSKH 24/7</span>
+              </div>
+            </a>
+          </div>
+          
+          {/* Mobile (ẩn .nav-items gốc, để cho đúng layout mobile cũ) */}
           <div className="nav-items">
             <a href='https://pc-mm88-link.rr88tino.workers.dev'
               style={{ textDecoration: 'none', color: 'inherit' }}
@@ -186,14 +205,6 @@ function App() {
               </div>
             </a>
           </div>
-          <a href='https://mm88-cskh.pages.dev'
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
-            <div className="nav-item nav-cskh">
-              <img src="/images/headphone.png" alt="Support" className="nav-icon" />
-              <span>CSKH 24/7</span>
-            </div>
-          </a>
         </div>
       </header>
 
@@ -238,13 +249,13 @@ function App() {
           {/* Nút Nhận tách riêng */}
           <div className="submit-button-container">
             <img
-              src="/images/btn.webp"
+              src="/images/btn1.webp"
               alt="Nhận"
-              className={`submit-btn ${(isSubmitting || !captchaValue) ? 'disabled' : ''}`}
-              onClick={isSubmitting || !captchaValue ? undefined : handleSubmit}
+              className={`submit-btn ${isSubmitting ? 'disabled' : ''}`}
+              onClick={isSubmitting ? undefined : handleSubmit}
               style={{
-                cursor: (isSubmitting || !captchaValue) ? 'not-allowed' : 'pointer',
-                opacity: (isSubmitting || !captchaValue) ? 0.6 : 1
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting ? 0.6 : 1
               }}
             />
           </div>
