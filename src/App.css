@@ -617,6 +617,13 @@ h1, .subtitle { display: none; }
   padding: 0 !important; margin: 0 !important; white-space: pre-line !important;
 }
 
+/* PC: toast trúng thưởng (top-center) xuống thấp hơn một chút so với mặc định */
+@media (min-width: 769px) {
+  .Toastify__toast-container--top-center {
+    top: 4rem !important;
+  }
+}
+
 /* Loading Animation Keyframes */
 @keyframes loading {
   0% { left: -100%; }
