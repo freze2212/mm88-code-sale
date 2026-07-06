@@ -5,10 +5,9 @@ import FloatingIPhoneFolderMenu from './FloatingIPhoneFolderMenu';
 import './App.css';
 
 function App() {
-  // Random các số từ 188 tới 6888, chia đều, kết thúc là số có 6 hoặc 8 ở đuôi
+  // Random các số từ 188 tới 888
   const POINTS = [
-    188, 208, 268, 288, 338, 388, 468, 488, 528, 588, 658, 688, 768, 788, 828, 888, 948, 988,
-    1688, 2688, 3688, 4888, 5888, 6688
+    188, 208, 268, 288, 338, 388, 468, 488, 528, 588, 658, 688, 768, 788, 828, 888
   ];
   const [formData, setFormData] = useState({
     username: '',
