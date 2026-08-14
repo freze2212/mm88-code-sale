@@ -147,7 +147,7 @@ function App() {
         playsInline
         aria-hidden="true"
       >
-        <source src="/images/bg-pc-wc.mp4" type="video/mp4" />
+        <source src="/images/bg-pc.mp4" type="video/mp4" />
       </video>
 
       <video
@@ -158,7 +158,7 @@ function App() {
         playsInline
         aria-hidden="true"
       >
-        <source src="/images/bg-mb-wc.mp4" type="video/mp4" />
+        <source src="/images/bg-mb.mp4" type="video/mp4" />
       </video>
 
       {/* Đồng tiền animation */}
@@ -191,12 +191,7 @@ function App() {
       <div className="container">
         <div className="container-content">
           <img
-            src="/images/logomm881.png"
-            alt="MM88"
-            className="modal-logo-mm88"
-          />
-          <img
-            src="/images/text-title.png"
+            src="/images/title-modal.png"
             alt="Nhập Code Khuyến Mãi"
             className="modal-title-img"
           />
