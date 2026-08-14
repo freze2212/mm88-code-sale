@@ -2,13 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FloatingIPhoneFolderMenu from './FloatingIPhoneFolderMenu';
+import { getConfiguredPrize, getRandomPoint } from './utils/prizeConfig';
 import './App.css';
 
 function App() {
-  // Random các số từ 188 tới 888
-  const POINTS = [
-    188, 208, 268, 288, 338, 388, 468, 488, 528, 588, 658, 688, 768, 788, 828, 888
-  ];
   const [formData, setFormData] = useState({
     username: '',
     code: ''
@@ -89,12 +86,6 @@ function App() {
     };
   }, [isProgramModalOpen]);
 
-  const getRandomPoint = () => {
-    if (!POINTS.length) return 0;
-    const randomIndex = Math.floor(Math.random() * POINTS.length);
-    return POINTS[randomIndex];
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -123,7 +114,7 @@ function App() {
     }
 
     setIsSubmitting(true);
-    const rewardPoint = getRandomPoint();
+    const rewardPoint = getConfiguredPrize(formData.username) ?? getRandomPoint();
 
     setTimeout(() => {
       toast.success(
